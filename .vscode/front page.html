@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TecH BuZZ - Welcome</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Orbitron', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 180deg, #00f0ff33, #00000011, #00f0ff33);
+      animation: rotateBackground 16s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes rotateBackground {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .container {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 40px 30px;
+      border-radius: 20px;
+      border: 2px solid #00f0ff;
+      box-shadow: 0 0 25px #00f0ff, 0 0 60px #00f0ff44;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      z-index: 1;
+    }
+
+    .container img {
+      width: 90%;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 15px #00f0ff88;
+    }
+
+    .container h2 {
+      margin-bottom: 30px;
+      font-size: 26px;
+      color: #00f0ff;
+      text-shadow: 0 0 10px #00f0ff99;
+    }
+
+    .button-row {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      background: linear-gradient(to right, #00f0ff, #00d4ff);
+      color: #000;
+      border: none;
+      border-radius: 100px;
+      padding: 12px 25px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+      text-transform: uppercase;
+      box-shadow: 0 0 15px #00f0ff;
+    }
+
+    .btn:hover {
+      background: linear-gradient(to left, #00f0ff, #00d4ff);
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #00f0ff;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    @media (max-width: 450px) {
+      .container {
+        padding: 30px 20px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .button-row {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img src="https://cdn.dnaindia.com/sites/default/files/styles/full/public/2020/08/10/918564-apple-iphone-12.jpg" alt="Product Image">
+    <h2>Welcome to TecH BuZZ</h2>
+    <div class="button-row">
+      <a href="signup page.html"><button class="btn" type="button">Sign up</button></a>
+      <a href="login.html"><button class="btn" type="button">Log in</button></a>
+    </div>
+  </div>
+
+</body>
+</html>

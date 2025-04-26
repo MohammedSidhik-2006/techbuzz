@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Info - TecH BuZZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden; /* Prevents scrolling */
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 180deg, #00f0ff33, #00000011, #00f0ff33);
+      animation: rotateGlow 20s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes rotateGlow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .form-container {
+      position: relative;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 40px 30px;
+      border-radius: 20px;
+      border: 2px solid #00f0ff;
+      box-shadow: 0 0 20px #00f0ff80;
+      width: 350px;
+      max-width: 90%;
+      z-index: 1;
+      height: auto; /* Let content be dynamic */
+      min-height: 400px; /* Minimum height to ensure space */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .form-container h2 {
+      color: #00f0ff;
+      text-align: center;
+      margin-bottom: 25px;
+      text-shadow: 0 0 8px #00f0ff99;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #00f0ff99;
+      background-color: #1f1f2e;
+      color: #00f0ff;
+      font-size: 14px;
+      outline: none;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #00f0ff88;
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(to right, #00f0ff, #00d4ff);
+      border: none;
+      border-radius: 10px;
+      color: black;
+      font-weight: bold;
+      font-size: 16px;
+      margin-top: 20px;
+      cursor: pointer;
+      box-shadow: 0 0 15px #00f0ff99;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #00f0ff;
+      background: linear-gradient(to left, #00f0ff, #00d4ff);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Enter Shipping Details</h2>
+    <form action="store_user_info.php" method="POST">
+      <input type="text" name="username" placeholder="Full Name" required>
+      <input type="tel" name="mobile" placeholder="Mobile Number" required>
+      <input type="text" name="country" placeholder="Country" required>
+      <input type="text" name="state" placeholder="State" required>
+      <input type="text" name="pincode" placeholder="Pincode" required>
+      <textarea name="address" placeholder="Full Address" rows="4" required></textarea>
+      <button type="submit">Proceed to Payment</button>
+    </form>
+  </div>
+
+</body>
+</html>

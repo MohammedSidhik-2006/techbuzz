@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Signup - TecH BuZZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(120deg, #0f0c29, #302b63, #24243e);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .glow-card {
+      background: rgba(0, 0, 0, 0.6);
+      border: 2px solid #00f0ff;
+      border-radius: 20px;
+      padding: 40px 30px;
+      width: 100%;
+      max-width: 400px;
+      color: #fff;
+      box-shadow: 0 0 20px #00f0ff, 0 0 60px #00f0ff44;
+      position: relative;
+      z-index: 1;
+    }
+
+    .glow-card h2 {
+      text-align: center;
+      font-size: 30px;
+      color: #00f0ff;
+      margin-bottom: 30px;
+    }
+
+    .form-group {
+      position: relative;
+      margin-bottom: 25px;
+    }
+
+    .form-group .material-icons {
+      position: absolute;
+      top: 12px;
+      left: 10px;
+      color: #00f0ff;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px 12px 12px 40px;
+      background-color: transparent;
+      border: 2px solid #00f0ff;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .form-group input::placeholder {
+      color: #ccc;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(to right, #00f0ff, #00d4ff);
+      color: #000;
+      font-weight: bold;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      text-transform: uppercase;
+      box-shadow: 0 0 10px #00f0ff;
+    }
+
+    button:hover {
+      background: linear-gradient(to left, #00f0ff, #00d4ff);
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #00f0ff;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 180deg, #00f0ff33, #00000011, #00f0ff33);
+      animation: spin 12s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 450px) {
+      .glow-card {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <form action="signup.php" method="post">
+    <div class="glow-card">
+      <h2>Join TecH BuZZ</h2>
+
+      <div class="form-group">
+        <span class="material-icons">person</span>
+        <input type="text" name="name" placeholder="Full Name" required />
+      </div>
+
+      <div class="form-group">
+        <span class="material-icons">email</span>
+        <input type="email" name="email" placeholder="Email" required />
+      </div>
+
+      <div class="form-group">
+        <span class="material-icons">lock</span>
+        <input type="password" name="password" placeholder="Password" required />
+      </div>
+
+      <div class="form-group">
+        <span class="material-icons">phone_android</span>
+        <input type="tel" name="phone" pattern="[0-9]{10}" maxlength="10" placeholder="Phone Number" required />
+      </div>
+
+      <button type="submit">Sign Up</button>
+    </div>
+  </form>
+</body>
+</html>

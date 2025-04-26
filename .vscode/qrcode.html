@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TecH Buzz - QR Payment</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Orbitron', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+      color: #00f0ff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 180deg, #00f0ff33, #00000011, #00f0ff33);
+      animation: rotateBG 14s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes rotateBG {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    h1, h2 {
+      position: relative;
+      text-align: center;
+      z-index: 1;
+      text-shadow: 0 0 10px #00f0ff99;
+    }
+
+    h1 {
+      font-size: 36px;
+      background: -webkit-linear-gradient(45deg, aqua, #00f0ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      font-size: 20px;
+      margin-bottom: 40px;
+      color: #ffffffdd;
+    }
+
+    .payment-status {
+      position: relative;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 30px;
+      border-radius: 20px;
+      border: 2px solid #00f0ff;
+      box-shadow: 0 0 20px #00f0ff66;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .payment-status img {
+      width: 250px;
+      height: 250px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #00f0ff88;
+      margin-bottom: 30px;
+    }
+
+    #print {
+      background: linear-gradient(to right, #00f0ff, #00d4ff);
+      color: black;
+      font-weight: bold;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 0 15px #00f0ff;
+    }
+
+    #print:hover {
+      background: linear-gradient(to left, #00f0ff, #00d4ff);
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #00f0ff;
+    }
+
+    #link {
+      margin-top: 50px;
+      z-index: 1;
+    }
+
+    #link a {
+      color: #00f0ff;
+      font-size: 18px;
+      text-decoration: none;
+      text-shadow: 0 0 10px #00f0ff;
+    }
+
+    #link a:hover {
+      color: #00d4ff;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
+      .payment-status img {
+        width: 180px;
+        height: 180px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>QR Code</h1>
+  <h2>Scan the QR code below to confirm your Delivery 👇</h2>
+
+  <div class="payment-status">
+    <img src="qr.jpg" alt="QR Code" />
+    <br><br>
+    <button id="print" onclick="payment()">Print Receipt</button>
+  </div>
+
+  <div id="link">
+    <a href="nn.html">Go to dashboard?</a>
+  </div>
+
+  <script>
+    function payment() {
+      let cartData = JSON.parse(localStorage.getItem('cartData'));
+      if (cartData && cartData.items.length > 0) {
+        let content = `
+          <h2 style="text-align:center;font-family:Orbitron;">TecH Buzz Receipt</h2>
+          <table border="1" cellspacing="0" cellpadding="10" style="width: 100%; text-align: center; font-family: Orbitron;">
+            <tr style="background-color:#00f0ff;color:#000;">
+              <th>S.No</th>
+              <th>Product</th>
+              <th>Price (Rs.)</th>
+            </tr>`;
+
+        cartData.items.forEach((item, index) => {
+          content += `
+            <tr>
+              <td>${index + 1}</td>
+              <td>${item.name}</td>
+              <td>${item.price}</td>
+            </tr>`;
+        });
+
+        content += `
+          </table>
+          <h3 style="text-align:right;font-family:Orbitron;">Total: Rs. ${cartData.totalAmount}</h3>`;
+
+        let printWindow = window.open('', '', 'width=800,height=600');
+        printWindow.document.write('<html><head><title>Receipt</title></head><body>');
+        printWindow.document.write(content);
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.print();
+      } else {
+        alert("No items in cart to print.");
+      }
+    }
+  </script>
+
+</body>
+</html>

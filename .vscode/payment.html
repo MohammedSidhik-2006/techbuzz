@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            text-align: center;
+            margin: 0;
+            color: white;
+        }
+
+        .container {
+            background-color: rgba(230, 213, 213, 0.7);
+            width: 80%;
+            max-width: 850px;
+            margin: auto;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
+            transform: translateY(10px);
+        }
+
+        h1 {
+            font-size: 35px;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            font-size: 18px;
+        }
+
+        th, td {
+            padding: 20px;
+            border: 2px solid #34495e;
+            text-align: center;
+        }
+
+        th {
+            background-color: #c0392b;
+            color: white;
+            font-weight: bold;
+        }
+
+        td {
+            background-color: #34495e;
+            color: #ecf0f1;
+        }
+
+        #final-amount {
+            font-size: 28px;
+            font-weight: bold;
+            margin-top: 30px;
+            color: #000000;
+        }
+
+        .pay-btn {
+            background: #f39c12;
+            color: white;
+            border: none;
+            padding: 18px 28px;
+            font-size: 20px;    
+            cursor: pointer;
+            margin-top: 30px;
+            border-radius: 10px;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .pay-btn:hover {
+            background: #e67e22;
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+            transform: translateY(-4px);
+        }
+
+        /* Responsiveness */
+        @media screen and (max-width: 600px) {
+            .container {
+                width: 95%;
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 28px;
+                margin-bottom: 20px;
+            }
+
+            .pay-btn {
+                width: 100%;
+                padding: 16px;
+            }
+
+            table {
+                font-size: 16px;
+            }
+
+            td, th {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Payment Summary</h1>
+        <table id="cart-summary">
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Product Name</th>
+                    <th>Price (Rs.)</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <h2 id="final-amount"></h2>
+        <button class="pay-btn" onclick="proceedToPayment()">Proceed to Pay</button>
+    </div>
+
+    <script>
+        let cartData = JSON.parse(localStorage.getItem('cartData'));
+
+        if (cartData && cartData.items.length > 0) {
+            let cartTableBody = document.querySelector("#cart-summary tbody");
+            cartData.items.forEach((item, index) => {
+                let row = `<tr>
+                    <td>${index + 1}</td>
+                    <td>${item.name}</td>
+                    <td>Rs. ${item.price}</td>
+                </tr>`;
+                cartTableBody.innerHTML += row;
+            });
+
+            document.getElementById('final-amount').innerText = `Total Payable: Rs. ${cartData.totalAmount}`;
+        } else {
+            document.getElementById('cart-summary').innerHTML = "<p>No items in cart.</p>";
+        }
+
+        function proceedToPayment() {
+            alert("Redirecting to Payment Gateway...");
+            window.location.href = "qrcode.html";
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TecH BuZZ</title>
+    
+
+<style>
+    body {
+        background-color: #f8f9fa; /* Light gray background */
+        font-family: Arial, sans-serif; /* Change font for better readability */
+        margin: 0;
+        padding: 0;
+    }
+
+    img {
+        display: block; 
+        width: 100%; 
+        margin: 10px auto; /* Center images */
+        border-radius: 10px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .pics {
+        display: flex; 
+        flex-wrap: wrap; 
+        justify-content: center; 
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding: 20px; /* Add padding around the product images */
+    }
+
+    .i {
+        border: 1px solid #dee2e6; /* Light border color */
+        transition: transform 0.3s ease, box-shadow 0.3s ease; 
+        margin: 15px; 
+        padding: 10px; 
+        border-radius: 10px;
+        width: 220px; /* Slightly wider product cards */
+        background-color: #ffffff; /* White background for product cards */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    }
+
+    .i:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+        background-color: #28a745; /* Green background on hover */
+        color: white;
+    }
+
+    .headfoo {
+        text-align: center; 
+        background-color: #343a40; /* Darker header background */
+        color: #ffffff; /* White text */
+        padding: 15px; /* Increased padding */
+        font-size: 24px; /* Larger font size */
+    }
+
+    #search {
+        margin-bottom: 20px; 
+        text-align: right;
+    }
+
+    #searchBox {
+        width: 500px; 
+        border: 2px solid #ced4da; /* Light border */
+        border-radius: 10px; 
+        padding: 8px; /* Increased padding */
+        font-size: 16px; /* Larger font size */
+    }
+
+    #search_button {
+        padding: 8px; 
+        border: none; 
+        border-radius: 15px; 
+        color: white; 
+        background-color: #007bff; /* Bootstrap primary color */
+        cursor: pointer;
+        font-size: 16px; /* Larger font size */
+        transition: background-color 0.3s ease;
+    }
+
+    #search_button:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+    }
+
+    .func {
+        cursor: pointer;
+        color: white;
+        border-radius: 15px;
+        background-color: #007bff; /* Bootstrap primary color */
+        padding: 10px; /* Increased padding */
+        width: 100%;
+        border: none; /* Remove border */
+        transition: background-color 0.3s ease;
+    }
+
+    .func:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+    }
+
+    #proceed-btn {
+        background-color: #ffc107; /* Bootstrap warning color */
+        color: white;
+        cursor: pointer;
+        padding: 10px; /* Increased padding */
+        border-radius: 10px;
+        border: none; /* Remove border */
+        transition: background-color 0.3s ease;
+    }
+
+    #proceed-btn:hover {
+        background-color: #e0a800; /* Darker yellow on hover */
+    }
+
+    .addCartButton {
+        width: 220px; /* Adjusted width */
+        height: auto; /* Auto height */
+        position: fixed;
+        bottom: 20px; /* Increased bottom margin */
+        right: 20px; /* Increased right margin */
+        background-color: #ffffff; /* White background */
+        border-radius: 15px;
+        font-family: sans-serif;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border: none; /* Remove border */
+        cursor: pointer;
+        z-index: 1000; /* Make sure it appears on top */
+        transition: 0.3s ease;
+        padding: 15px; /* Increased padding */
+    }
+
+    .addCartButton:hover {
+ background-color: #f8f9fa; /* Light gray on hover */
+    }
+
+    .contents {
+        text-align: center; /* Center text in the cart button */
+    }
+
+    #card-count, #total-amount {
+        font-size: 18px; /* Larger font size for better visibility */
+        margin: 5px 0; /* Margin for spacing */
+    }
+
+    @keyframes blink {
+        50% {background-color: yellow; color: black;}
+        100% {background-color: initial; color: initial;}
+    }
+
+    .blink {
+        animation: blink 0.3s ease-in-out;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <header>
+        <h1 class="headfoo">WELCOME TO TecH BuZZ SHOPPING MARKET</h1>
+        </header>
+        <div class="sub1">
+            <h2 class="headfoo">Our Products</h2>
+            <div id="search">
+                <input type="text" id="searchBox" placeholder="Find products........" style="width: 500px; border: 2px solid silver; border-radius: 10px; padding: 4px;">
+                <button id="search_button" onclick="searchProduct()">Search</button>
+            </div>
+            <div class="pics">
+                <div class="i"><img style="width: 200px; height: 240px;" src="vivo1.jpg" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">VIVO V27 5G </h2><h2 style="font-size: small; text-align: center;">(Magic Blue, 128 GB) </h2><h2 style="font-size: small; text-align: center;">(8 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.30000</h2><button class = func onclick="add('VIVO V27 5G',30000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="vivo2.jpg" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">VIVO V30E 5G </h2><h2 style="font-size: small; text-align: center;">(Glitter Aqua , 128 GB) </h2><h2 style="font-size: small; text-align: center;">(4 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.20000</h2><button class = func onclick="add('VIVO V30E 5G',20000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="vivo3.webp" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">VIVO V27 5G </h2><h2 style="font-size: small; text-align: center;">(Magic Blue, 128 GB) </h2><h2 style="font-size: small; text-align: center;">(8 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.32000</h2><button class = func onclick="add('VIVO V27 5G',32000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="vivo5.webp" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">VIVO V29 5G </h2><h2 style="font-size: small; text-align: center;">(Dual sim Black, 256 GB) </h2><h2 style="font-size: small; text-align: center;">(X80 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.40000</h2><button class = func onclick="add('VIVO V29 5G',40000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="vivo4.jpg" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">VIVO Y2000 5G </h2><h2 style="font-size: small; text-align: center;">(DesertGold, 256 GB) </h2><h2 style="font-size: small; text-align: center;">(8 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.35000</h2><button class = func onclick="add('VIVO Y2000 5G',35000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="vivo6.webp" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">VIVO X80  </h2><h2 style="font-size: small; text-align: center;">(Cosmic Black, 128 GB) </h2><h2 style="font-size: small; text-align: center;">(8 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.31000</h2><button class = func onclick="add('VIVO X80',31000)">Add To Cart</button></div>
+
+                <div class="i"><img style="width: 200px; height: 240px;" src="sam1.webp" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">SAMSUNG GALAXY A34 5G </h2><h2 style="font-size: small; text-align: center;">(AWESOME VIOLET, 128 GB) </h2><h2 style="font-size: small; text-align: center;">(8 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.60000</h2><button class = func onclick="add('SAMSUNG GALAXY A34 5G' ,60000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="sam2.jpg" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">GALAXY S23 ULTRA 5G </h2><h2 style="font-size: small; text-align: center;">(GREY PING , 256 GB) </h2><h2 style="font-size: small; text-align: center;">(12 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.150000</h2><button class = func onclick="add('GALAXY S23 ULTRA 5G' ,150000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="sam3.jpg" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">GALAXY S23 ULTRA 5G </h2><h2 style="font-size: small; text-align: center;">(Navy Star, 256 GB) </h2><h2 style="font-size: small; text-align: center;">(12 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.148000</h2><button class = func onclick="add('GALAXY S23 ULTRA 5G' ,148000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="sam4.jpeg" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">SAMSUNG GALAXY A34 5G </h2><h2 style="font-size: small; text-align: center;">(Golden Rag, 128 GB) </h2><h2 style="font-size: small; text-align: center;">(8 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.80000</h2><button class = func onclick="add('SAMSUNG GALAXY A34 5G' ,80000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="sam5.webp" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">SAMSUNG GALAXY A34 5G </h2><h2 style="font-size: small; text-align: center;">(Grey Top, 256 GB) </h2><h2 style="font-size: small; text-align: center;">(8 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.85000</h2><button class = func onclick="add('SAMSUNG GALAXY A34 5G' ,85000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="sam6.webp" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">GALAXY M35 5G  </h2><h2 style="font-size: small; text-align: center;">(Dark Blue, 256 GB) </h2><h2 style="font-size: small; text-align: center;">(8 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.45000</h2><button class = func onclick="add('GALAXY M35 5G' ,45000)">Add To Cart</button></div>
+                
+                <div class="i"><img style="width: 200px; height: 240px;" src="red1.webp" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">Redmi 12 5G </h2><h2 style="font-size: small; text-align: center;">(Pastel Blue, 128 GB) </h2><h2 style="font-size: small; text-align: center;">(8 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.20000</h2><button class = func onclick="add('Redmi 12 5G' ,20000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="red2.webp" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">Redmi Note 13 pro</h2><h2 style="font-size: small; text-align: center;">(Scarlet Red , 256 GB) </h2><h2 style="font-size: small; text-align: center;">(8 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.22000</h2><button class = func onclick="add('Redmi Note 13 pro' ,22000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="red3.webp" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">Redmi 13C 5G </h2><h2 style="font-size: small; text-align: center;">(Startrail Silver, 256 GB) </h2><h2 style="font-size: small; text-align: center;">(8 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.24000</h2><button class = func onclick="add('Redmi 13C 5G ' ,24000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="red4.webp" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">Redmi A4 5G </h2><h2 style="font-size: small; text-align: center;">(Sparkle Purple, 64 GB) </h2><h2 style="font-size: small; text-align: center;">(8 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.23500</h2><button class = func onclick="add('Redmi A4 5G ' ,23500)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="red5.webp" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">Redmi 12 5G </h2><h2 style="font-size: small; text-align: center;">(Jade Black 128 GB) </h2><h2 style="font-size: small; text-align: center;">(6 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.25000</h2><button class = func onclick="add('Redmi 12 5G' ,25000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 190px; height: 240px;" src="red6.webp" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">Redmi 10 4G  </h2><h2 style="font-size: small; text-align: center;">(Pacific Blue Blue, 64 GB) </h2><h2 style="font-size: small; text-align: center;">(4 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.19000</h2><button class = func onclick="add('Redmi 10 4G' ,19000)">Add To Cart</button></div>      
+
+                <div class="i"><img style="width: 200px; height: 240px;" src="i1.webp" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">iphone 16e</h2><h2 style="font-size: small; text-align: center;">(White , 128 GB) </h2><h2 style="font-size: small; text-align: center;">(4 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.120000</h2><button class = func onclick="add('iphone 16e' ,120000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="i2.webp" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">iphone 16</h2><h2 style="font-size: small; text-align: center;">(Ultramarine , 256 GB) </h2><h2 style="font-size: small; text-align: center;">(8 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.124000</h2><button class = func onclick="add('iphone 16' ,124000)">Add To Cart</button></div>                       
+                <div class="i"><img style="width: 200px; height: 240px;" src="i3.webp" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">iphone 16 </h2><h2 style="font-size: small; text-align: center;">(Desert Titanium, 128 GB) </h2><h2 style="font-size: small; text-align: center;">(4 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.135000</h2><button class = func onclick="add('iphone 16' ,135000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="i4.webp" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">Apple iphone 16 </h2><h2 style="font-size: small; text-align: center;">(Pink, 128 GB) </h2><h2 style="font-size: small; text-align: center;">(4 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.90000</h2><button class = func onclick="add('Apple iphone 16' ,90000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="i5.webp" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">Apple iphone 12</h2><h2 style="font-size: small; text-align: center;">(Apple i phone XR 128 GB) </h2><h2 style="font-size: small; text-align: center;">(4 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.80000</h2><button class = func onclick="add('Apple iphone 12' ,80000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="i6.webp" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">Apple iPhone 11 64GB </h2><h2 style="font-size: small; text-align: center;">(Green, 64 GB) </h2><h2 style="font-size: small; text-align: center;">(6 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.90000</h2><button class = func onclick="add('Apple iPhone 11 64GB' ,90000)">Add To Cart</button></div>
+            
+                <div class="i"><img style="width: 200px; height: 240px;" src="oppo1.webp" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">Oppo A79 5G</h2><h2 style="font-size: small; text-align: center;">(glowing Green, 128 Gb) </h2><h2 style="font-size: small; text-align: center;">(8 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.22000</h2><button class = func onclick="add('Oppo A79 5G' ,22000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="oppo2.jpg" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">Oppo A78 5G</h2><h2 style="font-size: small; text-align: center;">(Glowing Blue, 128GB RAM) </h2><h2 style="font-size: small; text-align: center;">(8 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.24000</h2><button class = func onclick="add('Oppo A78 5G' ,24000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="oppo3.webp" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">Oppo 2681 </h2><h2 style="font-size: small; text-align: center;">(Sparkle Black 128 GB) </h2><h2 style="font-size: small; text-align: center;">(4 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.30000</h2><button class = func onclick="add('Oppo 2681' ,30000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="oppo4.avif" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">Oppo A53 </h2><h2 style="font-size: small; text-align: center;">(Pale Green, 128 GB) </h2><h2 style="font-size: small; text-align: center;">(6 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.16000</h2><button class = func onclick="add('Oppo A53' ,16000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="oppo5.png" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">Oppo A3</h2><h2 style="font-size: small; text-align: center;">(Violet Rare 128 GB) </h2><h2 style="font-size: small; text-align: center;">(6 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.18000</h2><button class = func onclick="add('Oppo A3' ,18000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="oppo6.webp" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">Oppo A3 </h2><h2 style="font-size: small; text-align: center;">(Green, 128 GB) </h2><h2 style="font-size: small; text-align: center;">(4 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.18500</h2><button class = func onclick="add('Oppo A3' ,18500)">Add To Cart</button></div>
+            
+                <div class="i"><img style="width: 200px; height: 240px;" src="xio1.webp" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">Xiaomi 11i 5G</h2><h2 style="font-size: small; text-align: center;">(Stealth Black, 128 GB) </h2><h2 style="font-size: small; text-align: center;">(4 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.25000</h2><button class = func onclick="add('Xiaomi 11i 5G' ,25000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="xio2.jpg" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">Xiaomi 11T Pro 5G Hyperphone</h2><h2 style="font-size: small; text-align: center;">(Celestial Magic, 128GB) </h2><h2 style="font-size: small; text-align: center;">(8 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.26000</h2><button class = func onclick="add('Xiaomi 11T Pro 5G Hyperphone' ,26000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="xi3.webp" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">Xiaomi 8i </h2><h2 style="font-size: small; text-align: center;">(Ultra Mig, 128 GB) </h2><h2 style="font-size: small; text-align: center;">(8 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.27000</h2><button class = func onclick="add('Xiaomi 8i ' ,27000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="xio4.png" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">Xiaomi 9T pro </h2><h2 style="font-size: small; text-align: center;">(Silver, 128 GB) </h2><h2 style="font-size: small; text-align: center;">(6 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.28000</h2><button class = func onclick="add('Xiaomi 9T pro' ,28000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="xio5.jpg" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">Xiaomi 5G</h2><h2 style="font-size: small; text-align: center;">(Blue Xiaomi 256 GB) </h2><h2 style="font-size: small; text-align: center;">(16 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.28500</h2><button class = func onclick="add('Xiaomi 5G' ,28500)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="xio6.avif" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">Xiaomi plus 5G </h2><h2 style="font-size: small; text-align: center;">(Redmi Note 12 pro, 256 GB) </h2><h2 style="font-size: small; text-align: center;">(8 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.23500</h2><button class = func onclick="add('Xiaomi plus 5G' ,23500)">Add To Cart</button></div>
+            
+                <div class="i"><img style="width: 200px; height: 240px;" src="vivo7.webp" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">Vivo 5G</h2><h2 style="font-size: small; text-align: center;">(Scarlet Red, 256 GB) </h2><h2 style="font-size: small; text-align: center;">(12 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.40000</h2><button class = func onclick="add('Vivo 5G' ,40000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="vivo8.png" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">Vivo Y36</h2><h2 style="font-size: small; text-align: center;">(Meteor Black, 128GB) </h2><h2 style="font-size: small; text-align: center;">(8 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.24000</h2><button class = func onclick="add('Vivo Y36' ,24000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="vivo9.jpg" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">Vivo Y18 </h2><h2 style="font-size: small; text-align: center;">(Gem Green, 128 GB) </h2><h2 style="font-size: small; text-align: center;">(8 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.38000</h2><button class = func onclick="add('Vivo Y18 ' ,38000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="vivo10.webp" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">Vivo T3 </h2><h2 style="font-size: small; text-align: center;">(Majestic Black, 128 GB) </h2><h2 style="font-size: small; text-align: center;">(6 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.20000</h2><button class = func onclick="add('Vivo T3 ' ,20000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="vivo11.webp" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">Vivo Y300</h2><h2 style="font-size: small; text-align: center;">(Titanium Silver 256 GB) </h2><h2 style="font-size: small; text-align: center;">(16 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.29500</h2><button class = func onclick="add('Vivo Y300' ,29500)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="vivo12.webp" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">Vivo V40e</h2><h2 style="font-size: small; text-align: center;">(Royal Bronze, 256 GB) </h2><h2 style="font-size: small; text-align: center;">(8 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.32500</h2><button class = func onclick="add('Vivo V40e' ,32500)">Add To Cart</button></div>
+            
+                <div class="i"><img style="width: 200px; height: 240px;" src="oppo7.webp" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">Oppo K12x 5G</h2><h2 style="font-size: small; text-align: center;">( Breeze Blue, 256 GB) </h2><h2 style="font-size: small; text-align: center;">(12 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.19000</h2><button class = func onclick="add('Oppo K12x 5G' ,19000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="oppo8.webp" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">Oppo Reno 7 Pro 5G</h2><h2 style="font-size: small; text-align: center;">(Starlight Black, 128GB) </h2><h2 style="font-size: small; text-align: center;">(8 GB RAM)</h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.22000</h2><button class = func onclick="add('Oppo Reno 7 Pro 5G' ,22000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="but1.jpg" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">Lava T3 </h2><h2 style="font-size: small; text-align: center;">(Majestic Black, 128 GB) </h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.2500</h2><button class = func onclick="add('Lava T3' ,2500)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="but2.jpg" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">Lava A3 </h2><h2 style="font-size: small; text-align: center;">1800mAh Battery 1.8 inch LCD  </h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.3000</h2><button class = func onclick="add('Lava A3' ,3000)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 240px;" src="but3.jpeg" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">Lava A3 </h2><h2 style="font-size: small; text-align: center;">Vibe Dual Sim Keypad Mobile Phone  </h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.3200</h2><button class = func onclick="add('Lava A3' ,3200)">Add To Cart</button></div>
+                <div class="i"><img style="width: 200px; height: 230px;" src="but4.webp" alt="image"><h2 style="text-align: center;"></h2><h2 style="font-size: small; text-align: center;">32 Rom Lava A-9</h2><h2 style="font-size: small; text-align: center;">Dual Sim Mobile Phone </h2><h2 style="color: green; text-align: center; font-size: medium;">Rs.4000</h2><button class = func onclick="add('32 Rom Lava A-9' ,4000)">Add To Cart</button></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="addCartButton">
+        <div class="contents">
+        <p id="card-count"><b>Items in Cart:</b> 0</p>
+        <p id="total-amount"><b>Total Amount:</b> 0</p>
+        <button id="proceed-btn" onclick="proceedToPayment()"><b>Add to Cart</b></button>
+        </div>
+    </div><br><br>
+
+<script>
+        function searchProduct(){
+            let searchText = document.getElementById("searchBox").value.toLowerCase();
+            let products = document.querySelectorAll(".i");
+
+            products.forEach(function(product)
+            {
+                let productName = product.innerText.toLowerCase();
+                    if(productName.includes(searchText)){
+                        product.style.display = "table-cell";
+                    }
+                    else{
+                        product.style.display = "none";
+                    }
+            });
+        }
+
+            let cart = [];
+            function add(productName,productPrice){
+
+                let product = {
+                    name: productName , price: productPrice
+                };
+
+                cart.push(product);
+                updateCartDisplay();
+                button.classList.add("blink");
+                setTimeout(() => {
+                    button.classList.remove("blink");
+                }, 1500);
+        }
+
+        function updateCartDisplay(){
+            let cartCount = cart.length;
+            let totalAmount = cart.reduce((sum, item) => sum + item.price,0);
+
+            document.getElementById('card-count').innerText = `Items in Cart: ${cartCount}`;
+            document.getElementById('total-amount').innerText = `Total Amount: ${totalAmount}`;
+
+            if(cartCount > 0){
+                document.getElementById('proceed-btn').style.display = 'block';
+            }
+            else{
+                document.getElementById('proceed-btn').style.display = 'none';
+            }
+        }
+
+        function proceedToPayment(){
+            let cartData = {
+            items: cart,
+            totalAmount: cart.reduce((sum, item) => sum + item.price, 0)
+            };
+
+            localStorage.setItem('cartData',JSON.stringify(cartData));
+            window.location.href = "userinfo.html";
+        }
+</script>
+</body>
+</html>
